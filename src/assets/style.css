@@ -4,6 +4,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(0, 62, 255);
+  background: linear-gradient(45deg, rgb(72, 0, 255) -10%, rgba(0, 196, 255, 1) 74%, rgb(0, 221, 255) 96%);
 }
 
 * {
@@ -11,5 +13,5 @@
 }
 
 body {
-  @apply min-h-screen flex flex-col;
+  @apply min-h-screen w-full;
 }
