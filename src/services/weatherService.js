@@ -4,7 +4,7 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5/';
 const API_KEY = 'afdca070fd81c317260c232787b713fe';
 
 // Function to get weather data based on latitude and longitude is being defined.
-export const fetchWeatherData = async (lat, lon) => {
+export const fetchWeatherData = async (lat, lon, lang) => {
     try {
         const response = await axios.get(`${BASE_URL}forecast`, {
             params: {
@@ -12,7 +12,7 @@ export const fetchWeatherData = async (lat, lon) => {
                 lon: lon,
                 appid: API_KEY,
                 units: 'metric',
-                lang: 'en',
+                lang: lang,
             },
         });
         return response.data;
