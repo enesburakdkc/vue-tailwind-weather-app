@@ -16,7 +16,7 @@ onMounted(async () => {
     }
 });
 
-// Fonksiyon: 5 günlük tahminleri düzenleme
+// Function: Organizing 5-day forecasts
 function getDailyForecasts(list) {
     const dailyForecasts = [];
     const seenDates = new Set();
@@ -27,7 +27,7 @@ function getDailyForecasts(list) {
             seenDates.add(date);
             dailyForecasts.push(forecast);
         }
-        if (dailyForecasts.length === 5) break; // 5 günlük veri
+        if (dailyForecasts.length === 5) break; // 5-day data
     }
     return dailyForecasts;
 }
@@ -35,30 +35,30 @@ function getDailyForecasts(list) {
 
 <template>
     <main class="w-94">
-        <!-- Konum mesajı -->
+        <!-- Location message -->
         <div v-if="locationMessage"
             class="container flex flex-col items-center gap-6 font-normal bg-black/15 shadow-md rounded-3xl">
             {{ locationMessage }}
         </div>
 
-        <!-- Hata mesajı varsa göster -->
+        <!-- Show error message if there is one -->
         <div v-if="errorMessage"
             class="container flex flex-col items-center gap-6 font-normal bg-black/15 shadow-md rounded-3xl">
             {{ errorMessage }}
         </div>
-        <!-- Hava durumu verisi varsa göster -->
+        <!-- Show weather data if it exists -->
         <div v-else-if="weatherData" class="flex flex-col items-center gap-6">
 
-            <!-- Anlık Hava Durumu -->
-            <div class="container w-full flex flex-col items-center gap-6 bg-black/15 shadow-md rounded-3xl">
+            <!-- Current Weather -->
+            <div class="container w-full flex flex-col items-center gap-3 bg-black/15 shadow-md rounded-3xl">
                 <p class="text-3xl font-medium">{{ weatherData.city.name }}<span class="text-sm"> / {{
                     weatherData.city.country }}</span></p>
                 <img :src="`http://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@4x.png`"
-                    :alt="weatherData.list[0].weather[0].description" class="currentImg w-60">
+                    :alt="weatherData.list[0].weather[0].description" class="currentImg w-50">
                 <p class="text-2xl font-semibold">{{ weatherData.list[0].main.temp }}°C</p>
                 <p class="text-2xl font-normal capitalize">{{ weatherData.list[0].weather[0].description }}</p>
 
-                <!-- Saatlik Hava Durumu -->
+                <!-- Hourly Weather -->
                 <div class="hourlyWeatherContainer max-w-83 flex flex-row gap-5 overflow-auto">
                     <div v-for="(forecast, index) in weatherData.list.slice(0, 8)" :key="index"
                         class="hourlyWeather min-w-38 text-lg bg-black/10 shadow-md flex flex-col items-center rounded-2xl">
@@ -69,12 +69,12 @@ function getDailyForecasts(list) {
                         <img :src="`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`"
                             alt="weather-icon">
                         <p class="font-semibold">{{ forecast.main.temp }}°C</p>
-                        <p class="font-normal capitalize">{{ forecast.weather[0].description }}</p>
+                        <p class="font-normal capitalize text-center whitespace-nowrap">{{ forecast.weather[0].description }}</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 5 Günlük Hava Durumu -->
+            <!-- 5-Day Weather -->
             <div class="dailyWeatherContainer w-full flex flex-col gap-4 mt-6">
                 <div v-for="(forecast, index) in getDailyForecasts(weatherData.list)" :key="index"
                     class="dailyWeather w-full bg-black/10 shadow-md flex items-center justify-between p-4 rounded-3xl">
@@ -91,9 +91,10 @@ function getDailyForecasts(list) {
             </div>
         </div>
 
-        <!-- Veri yükleniyorsa göster -->
+        <!-- Show if data is loading -->
         <div v-else class="container flex flex-col items-center gap-6 font-normal bg-black/15 shadow-md rounded-3xl">
-            Loading data...
+            <p>Loading data...</p>
+            <p>Make sure your device's location is enabled.</p>
         </div>
     </main>
 </template>
@@ -101,11 +102,11 @@ function getDailyForecasts(list) {
 <style scoped>
 /* Due to issues with margins and paddings in Tailwind 4.0, they were manually defined using CSS. */
 main {
-    margin: 5rem auto;
+    margin: 2.6rem auto;
 }
 
 .currentImg {
-    margin: -1.6rem 0;
+    margin: -2.5rem 0;
 }
 
 .container {
@@ -114,6 +115,7 @@ main {
 
 .hourlyWeatherContainer {
     padding: 1.4rem 0.25rem;
+    margin-bottom: -1rem;
 }
 
 .hourlyWeather {
