@@ -2,7 +2,7 @@
     "id": "/vue-tailwind-weather-app/",
     "name": "Weather App",
     "short_name": "Weather App",
-    "start_url": "/vue-tailwind-weather-app/dist/",
+    "start_url": "/vue-tailwind-weather-app/",
     "display": "standalone",
     "background_color": "#00C4FF",
     "theme_color": "#000000",
