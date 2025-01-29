@@ -1,11 +1,11 @@
 <h1>Weather app project coded with Vue and Tailwind</h1>
 
-<p>This is a weather app project coded with Vue and Tailwind. The app uses an API to automatically fetch weather data based on the device’s current location. Additionally, the app includes a manifest.json file, allowing it to be installed as a PWA.</p>
+<p>This is a weather app project coded with Vue and Tailwind. The app uses an API to automatically fetch weather data based on the device’s current location. This app includes a manifest.json for PWA support. It also adjusts its text based on the user’s device language.</p>
 
 <p>This project is live at: <a href="https://enesburakdikici.com/vue-tailwind-weather-app/">https://enesburakdikici.com/vue-tailwind-weather-app/</a></p>
 
 <h2>Screenshots</h2>
 
-<img width="309" alt="Ekran Resmi 2025-01-29 01 35 42" src="https://github.com/user-attachments/assets/2192a715-4083-4d4e-b696-a03d2127b33e" />
+<img width="279" alt="Ekran Resmi 2025-01-29 16 22 06" src="https://github.com/user-attachments/assets/70d520f5-b2b1-43ab-b64c-616845e07e4b" />
 
-<img width="308" alt="Ekran Resmi 2025-01-29 01 35 57" src="https://github.com/user-attachments/assets/66690c5a-66c0-4142-acdc-d5bf0c7aa8a9" />
+<img width="278" alt="Ekran Resmi 2025-01-29 16 22 14" src="https://github.com/user-attachments/assets/fd247312-9b96-435f-81b1-0e2676b260e3" />
