@@ -8,4 +8,4 @@
 
 <img width="279" alt="Ekran Resmi 2025-01-29 16 22 06" src="https://github.com/user-attachments/assets/70d520f5-b2b1-43ab-b64c-616845e07e4b" />
 
-<img width="278" alt="Ekran Resmi 2025-01-29 16 22 14" src="https://github.com/user-attachments/assets/fd247312-9b96-435f-81b1-0e2676b260e3" />
+<img width="278" alt="Ekran Resmi 2025-01-29 16 22 14" src="https://github.com/user-attachments/assets/b37144e0-b3da-4e7c-8a67-ef1c3fbe5814" />
