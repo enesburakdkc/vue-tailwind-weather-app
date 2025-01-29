@@ -1,13 +1,14 @@
 {
+    "id": "/vue-tailwind-weather-app/",
     "name": "Weather App",
     "short_name": "Weather App",
-    "start_url": "/vue-tailwind-weather-app/",
+    "start_url": "/vue-tailwind-weather-app/dist/",
     "display": "standalone",
     "background_color": "#00C4FF",
     "theme_color": "#000000",
     "icons": [
         {
-            "src": "/logo.png",
+            "src": "/vue-tailwind-weather-app/dist/logo.png",
             "sizes": "140x140",
             "type": "image/png"
         }
