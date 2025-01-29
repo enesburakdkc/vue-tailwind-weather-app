@@ -6,6 +6,6 @@
 
 <h2>Screenshots</h2>
 
-<img width="279" alt="Ekran Resmi 2025-01-29 16 22 06" src="https://github.com/user-attachments/assets/70d520f5-b2b1-43ab-b64c-616845e07e4b" />
+<img width="279" alt="Ekran Resmi 2025-01-29 16 22 06" src="https://github.com/user-attachments/assets/23542ecd-4829-4820-b7e0-e6a0d144dc47" />
 
-<img width="278" alt="Ekran Resmi 2025-01-29 16 22 14" src="https://github.com/user-attachments/assets/b37144e0-b3da-4e7c-8a67-ef1c3fbe5814" />
+<img width="278" alt="Ekran Resmi 2025-01-29 16 22 14" src="https://github.com/user-attachments/assets/1af9f1b0-d926-42d2-b4a4-66d6110ad89c" />
