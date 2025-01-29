@@ -2,6 +2,8 @@
 
 <p>This is a weather app project coded with Vue and Tailwind. The app uses an API to automatically fetch weather data based on the device’s current location.</p>
 
+<p>A weather app project coded with Vue and Tailwind. The app uses an API to automatically fetch weather data based on the device’s current location. Additionally, the app includes a manifest.json file, allowing it to be installed as a PWA.</p>
+
 <p>This project is live at: <a href="https://enesburakdikici.com/vue-tailwind-weather-app/">https://enesburakdikici.com/vue-tailwind-weather-app/</a></p>
 
 <h2>Screenshots</h2>
