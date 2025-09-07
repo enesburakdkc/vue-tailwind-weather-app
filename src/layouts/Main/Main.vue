@@ -80,6 +80,16 @@ function getDailyForecasts(list) {
     }
     return dailyForecasts;
 }
+
+// Helper: Title-case each word using locale
+function titleCase(input) {
+    if (!input) return '';
+    return input
+        .toLocaleLowerCase(lang)
+        .split(/\s+/)
+        .map(word => word.charAt(0).toLocaleUpperCase(lang) + word.slice(1))
+        .join(' ');
+}
 </script>
 
 <template>
@@ -100,7 +110,7 @@ function getDailyForecasts(list) {
 
             <!-- Current Weather -->
             <div class="container w-full flex flex-col items-center gap-3 bg-black/15 shadow-md rounded-3xl">
-                <p class="text-3xl font-medium">{{ weatherData.city.name }}<span class="text-sm"> / {{
+                <p class="text-3xl font-medium">{{ titleCase(weatherData.city.name) }}<span class="text-sm"> / {{
                     weatherData.city.country }}</span></p>
                 <img :src="`http://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@4x.png`"
                     :alt="weatherData.list[0].weather[0].description" class="currentImg w-50">
