@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { getDefaultLanguage } from '../../services/languageService.js';
 import { getUserLocation } from '../../services/locationService.js';
 import { fetchWeatherData } from '../../services/weatherService.js';
@@ -7,6 +7,53 @@ import { fetchWeatherData } from '../../services/weatherService.js';
 const weatherData = ref(null);
 const errorMessage = ref('');
 const lang = getDefaultLanguage();
+
+// Drag-to-scroll state for desktop
+const isDragging = ref(false);
+const dragStartX = ref(0);
+const dragScrollLeft = ref(0);
+const dragTargetEl = ref(null);
+
+function onMouseDown(e) {
+    if (e.button !== 0) return; // only left click
+    const el = e.currentTarget;
+    isDragging.value = true;
+    dragTargetEl.value = el;
+    el.classList.add('dragging');
+    dragStartX.value = e.pageX - el.offsetLeft;
+    dragScrollLeft.value = el.scrollLeft;
+
+    window.addEventListener('mousemove', onWindowMouseMove, { passive: false });
+    window.addEventListener('mouseup', onWindowMouseUp);
+}
+
+function onWindowMouseMove(e) {
+    if (!isDragging.value || !dragTargetEl.value) return;
+    e.preventDefault();
+    const el = dragTargetEl.value;
+    const x = e.pageX - el.offsetLeft;
+    const walk = (x - dragStartX.value);
+    el.scrollLeft = dragScrollLeft.value - walk;
+}
+
+function endDrag() {
+    if (!isDragging.value) return;
+    isDragging.value = false;
+    if (dragTargetEl.value) {
+        dragTargetEl.value.classList.remove('dragging');
+    }
+    dragTargetEl.value = null;
+    window.removeEventListener('mousemove', onWindowMouseMove);
+    window.removeEventListener('mouseup', onWindowMouseUp);
+}
+
+function onWindowMouseUp() {
+    endDrag();
+}
+
+onUnmounted(() => {
+    endDrag();
+});
 
 onMounted(async () => {
     try {
@@ -61,7 +108,8 @@ function getDailyForecasts(list) {
                 <p class="text-2xl font-normal capitalize">{{ weatherData.list[0].weather[0].description }}</p>
 
                 <!-- Hourly Weather -->
-                <div class="hourlyWeatherContainer max-w-75 flex flex-row gap-5 overflow-auto">
+                <div class="hourlyWeatherContainer max-w-75 flex flex-row gap-5 overflow-auto select-none cursor-grab"
+                    @mousedown="onMouseDown" @dragstart.prevent>
                     <div v-for="(forecast, index) in weatherData.list.slice(0, 8)" :key="index"
                         class="hourlyWeather min-w-34 text-lg bg-black/10 shadow-md flex flex-col items-center rounded-2xl">
                         <p class="font-semibold">{{ new Date(forecast.dt * 1000).toLocaleTimeString(lang, {
@@ -69,7 +117,7 @@ function getDailyForecasts(list) {
                                 '2-digit', minute: '2-digit'
                         }) }}</p>
                         <img :src="`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`"
-                            alt="weather-icon" class="w-25">
+                            alt="weather-icon" class="w-25" draggable="false">
                         <p class="font-semibold">{{ forecast.main.temp }}°C</p>
                         <p class="font-normal capitalize text-center whitespace-nowrap">{{
                             forecast.weather[0].description }}</p>
@@ -119,6 +167,11 @@ main {
 .hourlyWeatherContainer {
     padding: 1.4rem 0.25rem;
     margin-bottom: -1.3rem;
+}
+
+/* Show grabbing cursor while dragging on desktop */
+.hourlyWeatherContainer.dragging {
+    cursor: grabbing;
 }
 
 .hourlyWeather {

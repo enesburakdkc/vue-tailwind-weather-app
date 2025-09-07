@@ -9,9 +9,20 @@
 }
 
 * {
-  @apply m-0 p-0;
+  @apply m-0 p-0 text-white;
 }
 
 body {
   @apply min-h-screen w-full select-none;
+
+  /* WebKit (Chrome, Safari, Edge) */
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff transparent;
+  }
 }
